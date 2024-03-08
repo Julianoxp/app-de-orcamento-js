@@ -1,0 +1,236 @@
+@media(max-width:1400px)
+{
+  .formdata{
+    width: 100% !important;
+  }
+
+}
+
+.default{
+    font-size: 11pt;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #545454;
+    margin: 0 auto;
+    padding: 0;
+    border: 1px solid #dcdcdc;
+   
+}
+
+.header-top{
+    width: 102%;
+    box-shadow: 1px 1px 3px #545454;
+    height: 88px;
+    background-color: #2671cc;
+    border: none !important;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    margin-top: -11px;
+    margin-left: -7px;
+}
+.img-logo{
+    margin-top: -15px;
+    width:450px;
+    height: 126px;
+    background-image: url('../_picture/logo.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 80%;
+   
+}
+.content{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    overflow: hidden !important;
+    border:none;
+    justify-content: flex-start;
+    height: 650px;
+    position: relative;
+}
+.formdata{
+    width: 32rem;
+    margin: 15px auto auto auto;
+    height: 650px;
+    overflow: auto;
+    border:none;
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    border-radius: 7px;
+    border:1px solid #e0e0e090;
+    overflow-x: hidden;
+}
+.form{
+    width: 500px;
+    border: none;
+    border-radius: none;
+    padding: 7px;
+}
+.formdata::-webkit-scrollbar{
+    width: 8px;
+    background: #F4F4F4;
+ 
+}
+.formdata::-webkit-scrollbar-thumb{
+    background-color: #909090;
+    border-radius: 7px;
+    
+}
+.formdata::-webkit-scrollbar-track{
+    background-color: #e2e2e2;
+}
+.form input{
+    width: 70%;
+    margin: 15px;
+    padding: 11px;
+    border-radius: 4px;
+    border: 1px solid #d6d6d6;
+    text-align: center;
+}
+.form input:focus{
+    outline: none;
+    border: 1px solid #68badb9f;
+    box-shadow: 1px 1px 2px #2fb3ff6a;
+}
+.form label{
+    margin: 15px;
+    font-size: 13pt;
+}
+.form select{
+    width: 70%;
+    margin: 15px;
+    padding: 11px;
+    border-radius: 4px;
+    border: 1px solid #d6d6d6;
+}
+.form select:focus{
+    outline: none;
+    border: 1px solid #68badb9f;
+    box-shadow: 1px 1px 2px #2fb3ff6a;
+}
+.form #btnadd{
+    border:none;
+    border-radius: 8px;
+    background-color: #37a167;
+    color: white;
+    padding: 12px 15px;
+    margin: 15px;
+}.form #btnadd:hover{
+    cursor: pointer;
+}
+.form #btnconsult{
+    border:none;
+    border-radius: 8px;
+    background-color: #3bb2cf;
+    color: white;
+    padding: 12px 15px;
+    margin: 15px;
+}#btnconsult:hover{
+    cursor: pointer;
+}
+.form input[type="number"]::-webkit-inner-spin-button,
+.form input[type="nunber"]::-webkit-outer-spin-button{
+    -webkit-appearance: none;
+}
+.glassContent{
+    border:1px solid #d6d6d6;
+    border-radius: 7px;
+    margin: 7px;
+    padding: 10px;
+}
+.labelContent{
+    background-color: rgb(81, 127, 203);
+    border-radius: 7px;
+    padding: 4px 7px;
+    font-size: 9pt !important;
+    color: white;
+}
+.labelClose{
+    border:none;
+    border-radius: 8px;
+    background-color: #b24141;
+    color: white;
+    padding: 12px 15px;
+    margin: 15px;
+}.labelClose:hover{
+    cursor: pointer;
+}
+
+.sucess{
+    display: none;
+    width: 168px;
+    height: 170px;
+    background-image: url('../_picture/done.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 80%;
+    /*animation: .5s pullup ease-in-out infinite;*/
+}
+.reload{
+    background-color: #37a167;
+    color: white;
+    padding: 12px 15px;
+    margin: 15px;
+    border:none;
+    border-radius: 8px;
+    display: none;
+}
+.resultview{
+    background-color: rgb(234, 246, 249);
+    background-image: url('../_picture/relatorio.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 20%;
+    width: 50rem;
+    margin: 15px auto 15px auto;
+    padding: 15px;
+    border:none;
+    animation: .4s ZoonIn ease-in;
+    border-radius: 7px;
+}
+.resultview span {
+    
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 3px;
+    margin: 2px;
+    font-size: 18pt;
+    
+}
+.boxmsg{
+    display:none;
+    position:absolute;
+    left: 35%;
+    top: 40%;
+    height: 120px;
+    width: 320px;
+    background-color: white;
+}
+.msg{
+    position: absolute;
+    font-size: 9pt;
+    text-decoration: underline;
+}
+.obs{
+    bottom: 1%;
+    right: 4px;   
+}
+.version{
+    bottom: 1%;
+    right: 422px;
+}
+@keyframes pullup {
+    0%{
+        margin-top:125px;
+    }
+    50%{
+        margin-top:95px;
+    }
+    100%{
+        margin-top:125px;
+    }
+    
+}
