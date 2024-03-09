@@ -1,8 +1,6 @@
 window.addEventListener('DOMContentLoaded',(event)=>{
-   const btnpdf = document.querySelector('.btnpdf')
-   btnpdf.addEventListener('click',function(){
-        window.open('','','height=700,width=700')
-   })
+  
+  
 })
 var indicedata = 1
 var referencia = 5
@@ -52,7 +50,7 @@ function validateForm()
                 return false
             }
     }
-    alert('true')
+    
     document.getElementById('formdata').style.display = 'none'
     document.getElementById('result-view').style.backgroundSize = "7%"
     document.getElementById('result-view').style.backgroundImage = "url('_picture/load.gif')"
