@@ -6,9 +6,7 @@
     <link rel="shortcut icon" href="logoicon.png" type="image/x-icon">
     <link rel="stylesheet" href="_css/main.css">
     <script type="text/javascript" src="_js/fn.js"></script>
-    <script type="text/javascript">
-      
-    </script>
+    
     <title>Consulte.Me</title>
 </head>
 <body>
@@ -18,21 +16,38 @@
             <form action="" return=false id="forminfo" class="form default" onsubmit="return false">
                 <label for="Referência-de-orçamento">Método :</label><br>
                 <select name="referencia-orçamento" id="referencia-de-orçamento" >
+                    <option value=""></option>
                     <option value="linear">Linear</option>
                     <option value="metro-quadrado">Metro Quadrado (m²)</option>
                 </select>
                 <br>
                 <label for="name-business">Nome da empresa :</label><br><input type="text"  id="name-business"  placeholder="Empresa"><br>
-                <label for="name-pelicula">Película cotada:</label><br><input type="text"  id="name-pelicula"  placeholder="Película"><br>
-                <label for="valor-da-película">Valor-da-película por metro (m²) ou Linear:</label><br><input type="number" id="valor-de-cobranca" placeholder="Valor R$" ><br>
+                <label for="name-pelicula">Película :</label><br><input type="text"  id="name-pelicula"  placeholder="Película"><br>
+                <label for="valor-da-película">Valor :</label><br><input type="number" id="valor-de-cobranca" placeholder="valor em cada metro" step=".01"><br>
                 <div id="viewform"></div>
                 <button onclick="newInputGlass()" id="btnadd">ADICIONAR UMA NOVA MEDIDA +</button>
                 <button onclick="RemoveGlass()" class="labelClose">Remover</button>
                 <button onclick="validateForm()" id="btnconsult" style="display:none">Consultar</button>
+               
             </form>
       
         </div>
         <div class="resultview default" id="result-view">
+           <!-- <div class="card">
+                <h2 id="title-name-business" style="text-align: center;">nomw da empresa</h2>
+                <hr width="650">
+                <br>
+                <label class="formatResult">Empresa :</label><span id="title-name-business" class="formatResult"></span><br>
+                <label class="formatResult">Quantidade de vidros :</label><span id="TOTglass" class="formatResult"></span><br>
+                <label class="formatResult">Metragem :</label><span id="meter" class="formatResult"></span><br>
+                <label class="formatResult">Película :</label><span id="tint" class="formatResult"></span><br>
+                <label class="formatResult">Valor de unidade :</label><span id="value-uni" class="formatResult"></span>
+                <br>
+                <hr>
+                <h4 class="formatResult">Total :</h4><span id="resultTOT" class="formatResult"></span>
+                <br><br>
+                <label>Data :</label><span id="datespan"></span>
+            </div> -->
             <button onclick="window.location.reload()" class="reload" id="btn-reload">Novo Cálculo + </button>
             
             <div class="sucess" id="icon-done" onclick="window.location.reload()"></div>
@@ -41,6 +56,21 @@
     </main>
     <p class="obs msg">Projeto limitado a cálculos simples, em breve teremos uma nova versão! <img src="aviso.ico" width="19px" alt="aviso"> </p>
     <p class="version msg">versão 1.0</p>
+    <script type="text/javascript">
+     /*   dt = new Date()
+        day = dt.getDay()
+        month = dt.getMonth()
+        if(day<10){
+            day = '0'+day
+        }
+        if(month<10){
+            month = '0'+month
+        }
+        timedata = day +'/'
+        timedata += month +'/'
+        timedata += dt.getFullYear()
+        document.getElementById('datespan').textContent = timedata */
+      </script>
    
 </body>
 </html>

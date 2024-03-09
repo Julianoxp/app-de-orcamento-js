@@ -178,6 +178,8 @@
     border:none;
     border-radius: 8px;
     display: none;
+}.reload:hover{
+    cursor: pointer;
 }
 .resultview{
     background-color: rgb(234, 246, 249);

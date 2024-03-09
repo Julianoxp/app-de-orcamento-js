@@ -1,5 +1,8 @@
 window.addEventListener('DOMContentLoaded',(event)=>{
-   const labelx = document.getElementById('')
+   const btnpdf = document.querySelector('.btnpdf')
+   btnpdf.addEventListener('click',function(){
+        window.open('','','height=700,width=700')
+   })
 })
 var indicedata = 1
 var referencia = 5
@@ -15,22 +18,41 @@ function validateForm()
     document.getElementById('name-business').value,
     document.getElementById('name-pelicula').value,
     document.getElementById('valor-de-cobranca').value];
+    
+    regexH = /[0-9]{1,2}\.[0-9]{2}/g
+    regexW = /[0-9]{1,2}\.[0-9]{2}/g
     for(i=0;i<4;i++)
     {
         if(data[i] == ''){
             alert('Dados incompletos!')
             return false
         }
+         
     }
     for(i=ref;i<=ref;i++){
-            var datameterHeight = document.getElementById('altura'+i).value
-            var datameterWidth = document.getElementById('largura'+i).value
-            if(datameterHeight == '' || datameterWidth == '')
+            meterHeight = document.getElementById('altura'+i).value
+            meterWidth = document.getElementById('largura'+i).value
+            if(meterHeight.length > 5 || meterWidth.length > 5){
+                alert('Medidas +99 não são aceitas!')
+                return false
+            }
+            if(meterHeight == '' || meterWidth == '')
             {
                 alert('Dados incompletos!')
                 return false
             }
+            validateHeight = regexH.test(meterHeight)
+            validateWidth = regexW.test(meterWidth)
+            if(!validateHeight){
+                alert('Insira dados de forma correta! Ex:\"22,55\"')
+                return false
+            }
+            if(!validateWidth){
+                alert('Insira dados de forma correta! Ex:\"22,55\"')
+                return false
+            }
     }
+    alert('true')
     document.getElementById('formdata').style.display = 'none'
     document.getElementById('result-view').style.backgroundSize = "7%"
     document.getElementById('result-view').style.backgroundImage = "url('_picture/load.gif')"
@@ -38,13 +60,17 @@ function validateForm()
     setTimeout(()=>{
         resultdata()
     },4500)
-}/*
+} 
+function nwpdf()
+{
+    window.print()
+}
 function RemoveGlass(aidi)
 {
     document.getElementById('idcontent'+aidi).remove()
     indice--
     ref--
-}*/
+}
 function RemoveGlass()
 {
     if(indice >=1)
@@ -59,11 +85,12 @@ function RemoveGlass()
     }
 }
 function newInputGlass(){
-    ref = indice
+    
     Query = true
     if(Query && indice <= 50)
     {
         indice++
+        ref = indice
         var html = document.getElementById('viewform')
 
         content = document.createElement("div")
@@ -175,8 +202,8 @@ function resultdata()
             spanMeter.textContent = meter.toFixed(2) + ' m² metros quadrados'
             spanBusiness.textContent = 'Empresa :  ' + document.getElementById('name-business').value
             spanTint.textContent = 'Película : ' + document.getElementById('name-pelicula').value
-            spanValue.textContent = 'Valor :' + valueRef.toFixed(2) + 'R$'
-            spanResultValue.textContent = 'Cotação final : ' + result.toFixed(2) + ' R$' 
+            spanValue.textContent = 'Valor:' + valueRef.toLocaleString('pt-br', {minimumFractionDigits: 2}) + ' R$/metro(m²)'
+            spanResultValue.textContent = 'Cotação final : ' + result.toLocaleString('pt-br', {minimumFractionDigits: 2}) + ' R$' 
             html.appendChild(spanBusiness)
             html.appendChild(br1)
             html.appendChild(spanMeter)
@@ -221,8 +248,8 @@ function resultdata()
         spanMeter.textContent = meter.toFixed(2) + ' metros de forma Linear'
         spanBusiness.textContent = 'Empresa :' + document.getElementById('name-business').value
         spanTint.textContent = 'Película : ' + document.getElementById('name-pelicula').value
-        spanValue.textContent = 'Valor M/R$ :' + valueRef.toFixed(2) + 'R$'
-        spanResultValue.textContent = 'Cotação final : ' + result.toFixed(2) + ' R$' 
+        spanValue.textContent = 'Valor :' + valueRef.toLocaleString('pt-br', {minimumFractionDigits: 2}) + ' R$/metro'
+        spanResultValue.textContent = 'Cotação final : ' + result.toLocaleString('pt-br', {minimumFractionDigits: 2}) + ' R$' 
         html.appendChild(spanBusiness)
         html.appendChild(br1)
         html.appendChild(spanMeter)
