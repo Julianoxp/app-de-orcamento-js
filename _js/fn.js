@@ -79,7 +79,7 @@ function nwpdf()
     win.document.write('</html>')
     
     win.print()
-    win.close()
+    
 }
 function RemoveGlass(aidi)
 {
