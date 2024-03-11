@@ -28,48 +28,49 @@
                 <button onclick="newInputGlass()" id="btnadd">ADICIONAR UMA NOVA MEDIDA +</button>
                 <button onclick="RemoveGlass()" class="labelClose">Remover</button>
                 <button onclick="validateForm()" id="btnconsult" style="display:none">Consultar</button>
-                <button id="btnpdf" onclick="alert('Em breve será implementado!')">Salvar PDF</button>
+                
             </form>
-      
         </div>
         <div class="resultview default" id="result-view">
-           <!-- <div class="card">
-                <h2 id="title-name-business" style="text-align: center;">nomw da empresa</h2>
-                <hr width="650">
+        <button onclick="window.location.reload()" class="reload" id="btn-reload">Novo Cálculo + </button>
+        <button id="btnpdf" onclick="nwpdf()">Salvar PDF</button>
+            <div class="card" id="card-result" >
+                <h2 id="title-name-business" style="text-align: center;">Nome da empresa</h2>
+                <hr width="60%">
                 <br>
-                <label class="formatResult">Empresa :</label><span id="title-name-business" class="formatResult"></span><br>
-                <label class="formatResult">Quantidade de vidros :</label><span id="TOTglass" class="formatResult"></span><br>
-                <label class="formatResult">Metragem :</label><span id="meter" class="formatResult"></span><br>
-                <label class="formatResult">Película :</label><span id="tint" class="formatResult"></span><br>
+                <br>
+                <label class="formatResult">Empresa :</label><span id="title-name-business-span" class="formatResult"></span><br><br>
+                <label class="formatResult">Quantidade de vidros :</label><span id="TOTglass" class="formatResult"></span><br><br>
+                <label class="formatResult">Metragem :</label><span id="meter" class="formatResult"></span><br><br>
+                <label class="formatResult">Película :</label><span id="tint" class="formatResult"></span><br><br>
                 <label class="formatResult">Valor de unidade :</label><span id="value-uni" class="formatResult"></span>
-                <br>
-                <hr>
-                <h4 class="formatResult">Total :</h4><span id="resultTOT" class="formatResult"></span>
                 <br><br>
+                <hr width="88%"><br>
+                <label class="formatResult" style="font-weight: bolder;">Total :</label><span id="resultTOT" class="formatResult"></span>
+                <br><br><br>
                 <label>Data :</label><span id="datespan"></span>
-            </div> -->
-            <button onclick="window.location.reload()" class="reload" id="btn-reload">Novo Cálculo + </button>
-            
+            </div>
             <div class="sucess" id="icon-done" onclick="window.location.reload()"></div>
+            <p class="obs msg">Projeto inicial<img src="aviso.ico" width="19px" alt="aviso"></p>
+    <p class="version msg">versão 1.0</p>
         </div>
         <div class="boxmsg default" id="boxContent"><button onclick="closeBox()">enviar</button><br><p id="R"></p></div>
     </main>
-    <p class="obs msg">Projeto limitado a cálculos simples, em breve teremos uma nova versão! <img src="aviso.ico" width="19px" alt="aviso"> </p>
-    <p class="version msg">versão 1.0</p>
+    
     <script type="text/javascript">
-     /*   dt = new Date()
-        day = dt.getDay()
-        month = dt.getMonth()
-        if(day<10){
-            day = '0'+day
-        }
-        if(month<10){
-            month = '0'+month
-        }
+        dt = new Date()
+        
+        day = dt.getDate()
+        day = day<10?"0"+day:day
+        
+        month = 1
+        month += dt.getMonth()
+        month = month<10?"0"+month:month
+
         timedata = day +'/'
         timedata += month +'/'
         timedata += dt.getFullYear()
-        document.getElementById('datespan').textContent = timedata */
+        document.getElementById('datespan').textContent = timedata 
       </script>
    
 </body>

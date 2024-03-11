@@ -61,7 +61,25 @@ function validateForm()
 } 
 function nwpdf()
 {
-    window.print()
+    const htmlResult = document.getElementById('card-result').innerHTML
+    const win = window.open('','','height=700,width=700')
+
+    style = "<style>"
+    style +="body{background-color: white;font-size: 11pt;font-family: Arial, Helvetica, sans-serif;color: #545454;}"
+    style +="span{margin:120px auto 120px auto;}label{margin:1200px auto 1200px auto;}"
+    style += "</style>"
+    
+    win.document.write('<!DOCTYPE html><html lang="pt-br">')
+    win.document.write('<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"> <link rel="shortcut icon" href="logoicon.png" type="image/x-icon">')
+    win.document.write(style)
+    win.document.write('<title>Consulte.Me</title></head>')
+    win.document.write('<body>')
+    win.document.write(htmlResult)
+    win.document.write('</body>')
+    win.document.write('</html>')
+    
+    win.print()
+    win.close()
 }
 function RemoveGlass(aidi)
 {
@@ -178,17 +196,7 @@ function resultdata()
             let meter = 0
             while(i <= ref)
             {
-                spanMeter = document.createElement('span')
-                spanTint = document.createElement('span')
-                spanResultValue = document.createElement('span')
-                spanValue = document.createElement('span')
-                spanBusiness = document.createElement('span')
-                br1 = document.createElement('br')
-                br2 = document.createElement('br')
-                br3 = document.createElement('br')
-                br4 = document.createElement('br')
-                br5 = document.createElement('br')
-               
+                     
                 heightvalue = document.getElementById('altura'+i).value
                 widthvalue = document.getElementById('largura'+i).value
                 meter += heightvalue * widthvalue
@@ -196,28 +204,18 @@ function resultdata()
         
                 i++
             }
-           
-            spanMeter.textContent = meter.toFixed(2) + ' m² metros quadrados'
-            spanBusiness.textContent = 'Empresa :  ' + document.getElementById('name-business').value
-            spanTint.textContent = 'Película : ' + document.getElementById('name-pelicula').value
-            spanValue.textContent = 'Valor:' + valueRef.toLocaleString('pt-br', {minimumFractionDigits: 2}) + ' R$/metro(m²)'
-            spanResultValue.textContent = 'Cotação final : ' + result.toLocaleString('pt-br', {minimumFractionDigits: 2}) + ' R$' 
-            html.appendChild(spanBusiness)
-            html.appendChild(br1)
-            html.appendChild(spanMeter)
-            html.appendChild(br2)
-            html.appendChild(spanTint)
-            html.appendChild(br3)
-            html.appendChild(spanValue)
-            html.appendChild(br4)
-            html.appendChild(br5)
-            html.appendChild(spanResultValue)
-            if(Window.innerWidth <= 1400){
-                document.getElementById('formdata').style.display = 'none'
-            }
+            document.getElementById('card-result').style.display = 'block'
             document.getElementById('icon-done').style.display = 'block'
             document.getElementById('btn-reload').style.display = 'block'
-            
+            document.getElementById('btnpdf').style.display = 'block' 
+
+            document.getElementById('title-name-business').textContent = document.getElementById('name-business').value
+            document.getElementById('title-name-business-span').textContent = document.getElementById('name-business').value
+            document.getElementById('TOTglass').textContent = ref + ' vidro\'s '
+            document.getElementById('meter').textContent = meter.toFixed(2) + ' m² metros quadrados'
+            document.getElementById('tint').textContent = document.getElementById('name-pelicula').value
+            document.getElementById('value-uni').textContent = valueRef.toLocaleString('pt-br', {minimumFractionDigits: 2}) + ' R$/metro(m²)'
+            document.getElementById('resultTOT').textContent = result.toLocaleString('pt-br', {minimumFractionDigits: 2}) + ' R$'
         }
     }
     else{
@@ -227,41 +225,26 @@ function resultdata()
         i=1
         let meter = 0
         while(i<=ref){
-            spanMeter = document.createElement('span')
-            spanTint = document.createElement('span')
-            spanResultValue = document.createElement('span')
-            spanValue = document.createElement('span')
-            spanBusiness = document.createElement('span')
-            br1 = document.createElement('br')
-            br2 = document.createElement('br')
-            br3 = document.createElement('br')
-            br4 = document.createElement('br')
-            br5 = document.createElement('br')
+     
             heightvalue = document.getElementById('altura'+i).value
             meter = (meter + parseFloat(heightvalue))
             i++
         }
         result = meter*valueRef
-        
-        spanMeter.textContent = meter.toFixed(2) + ' metros de forma Linear'
-        spanBusiness.textContent = 'Empresa :' + document.getElementById('name-business').value
-        spanTint.textContent = 'Película : ' + document.getElementById('name-pelicula').value
-        spanValue.textContent = 'Valor :' + valueRef.toLocaleString('pt-br', {minimumFractionDigits: 2}) + ' R$/metro'
-        spanResultValue.textContent = 'Cotação final : ' + result.toLocaleString('pt-br', {minimumFractionDigits: 2}) + ' R$' 
-        html.appendChild(spanBusiness)
-        html.appendChild(br1)
-        html.appendChild(spanMeter)
-        html.appendChild(br2)
-        html.appendChild(spanTint)
-        html.appendChild(br3)
-        html.appendChild(spanValue)
-        html.appendChild(br4)
-        html.appendChild(br5)
-        html.appendChild(spanResultValue)
-      
+        document.getElementById('card-result').style.display = 'block'
         document.getElementById('icon-done').style.display = 'block'
         document.getElementById('btn-reload').style.display = 'block'
-        
+        document.getElementById('btnpdf').style.display = 'block' 
+
+        document.getElementById('title-name-business').textContent = document.getElementById('name-business').value
+        document.getElementById('title-name-business-span').textContent = document.getElementById('name-business').value
+        document.getElementById('TOTglass').textContent = ref + ' vidro\'s '
+        document.getElementById('meter').textContent = meter.toFixed(2) + ' metros de forma Linear'
+        document.getElementById('tint').textContent = document.getElementById('name-pelicula').value
+        document.getElementById('value-uni').textContent = valueRef.toLocaleString('pt-br', {minimumFractionDigits: 2}) + ' R$/metro'
+        document.getElementById('resultTOT').textContent = result.toLocaleString('pt-br', {minimumFractionDigits: 2}) + ' R$'
+
+         
        }
     }
     
