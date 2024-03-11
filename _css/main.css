@@ -1,7 +1,8 @@
 @media(max-width:1400px)
 {
   .formdata{
-    width: 100% !important;
+    width: 95% !important;
+    height: 700px !important;
   }
 
 }
@@ -50,13 +51,14 @@
     overflow: hidden !important;
     border:none;
     justify-content: flex-start;
-    height: 645px;
+    height: 670px;
     position: relative;
+    margin-top: -8px;
 }
 .formdata{
     width: 32rem;
     margin: 15px auto auto auto;
-    height: 650px;
+    height: 653px;
     overflow: auto;
     border:none;
     display: flex;
@@ -119,8 +121,8 @@
     border-radius: 8px;
     background-color: #37a167;
     color: white;
-    padding: 12px 15px;
-    margin: 15px;
+    padding: 12px 32px;
+    margin: 5px;
 }.form #btnadd:hover{
     cursor: pointer;
 }
@@ -130,7 +132,7 @@
     background-color: #3bb2cf;
     color: white;
     padding: 12px 15px;
-    margin: 15px;
+    margin: 5px;
 }#btnconsult:hover{
     cursor: pointer;
 }
@@ -157,11 +159,17 @@
     background-color: #b24141;
     color: white;
     padding: 12px 15px;
-    margin: 15px;
+    margin: 5px;
+    display: none;
 }.labelClose:hover{
     cursor: pointer;
 }
-
+.buttonControls{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
 .sucess{
     display: none;
     width: 168px;
@@ -205,10 +213,13 @@
 #btnpdf{
     background-color: #3919ae;
     color: white;
-    padding: 12px 15px;
+    padding: 15px;
     margin: 15px;
     border:none;
     border-radius: 8px;
+    align-content: baseline;
+    height: 43px;
+    width: 120px;
     display: none;
 }#btnpdf:hover{
     cursor:pointer;

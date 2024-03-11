@@ -1,5 +1,18 @@
 window.addEventListener('DOMContentLoaded',(event)=>{
-  
+    btclose = document.getElementById('btnclose')
+    btclose.onclick = function(){
+        if(indice >=1)
+        {
+            document.getElementById('idcontent'+indice).remove()
+            indice--
+            ref--
+        }
+        if(indice == 0)
+        {
+            document.getElementById('btnconsult').style.display = "none"
+            document.getElementById('btnclose').style.display = 'none'
+        }
+    }
   
 })
 var indicedata = 1
@@ -65,7 +78,7 @@ function nwpdf()
     const win = window.open('','','height=700,width=700')
 
     style = "<style>"
-    style +="body{background-color: white;font-size: 11pt;font-family: Arial, Helvetica, sans-serif;color: #545454;}"
+    style +="body{background-color: white;font-size: 15pt;font-family: Arial, Helvetica, sans-serif;color: #545454;}"
     style +="span{margin:120px auto 120px auto;}label{margin:1200px auto 1200px auto;}"
     style += "</style>"
     
@@ -81,27 +94,10 @@ function nwpdf()
     win.print()
     
 }
-function RemoveGlass(aidi)
-{
-    document.getElementById('idcontent'+aidi).remove()
-    indice--
-    ref--
-}
-function RemoveGlass()
-{
-    if(indice >=1)
-    {
-        document.getElementById('idcontent'+indice).remove()
-        indice--
-        ref--
-    }
-    if(indice == 0)
-    {
-        document.getElementById('btnconsult').style.display = "none"
-    }
-}
+
+
 function newInputGlass(){
-    
+    document.getElementById('btnclose').style.display = 'inline'
     Query = true
     if(Query && indice <= 50)
     {
@@ -206,16 +202,16 @@ function resultdata()
             }
             document.getElementById('card-result').style.display = 'block'
             document.getElementById('icon-done').style.display = 'block'
-            document.getElementById('btn-reload').style.display = 'block'
-            document.getElementById('btnpdf').style.display = 'block' 
+            document.getElementById('btn-reload').style.display = 'inline'
+            document.getElementById('btnpdf').style.display = 'inline' 
 
             document.getElementById('title-name-business').textContent = document.getElementById('name-business').value
             document.getElementById('title-name-business-span').textContent = document.getElementById('name-business').value
             document.getElementById('TOTglass').textContent = ref + ' vidro\'s '
             document.getElementById('meter').textContent = meter.toFixed(2) + ' m² metros quadrados'
             document.getElementById('tint').textContent = document.getElementById('name-pelicula').value
-            document.getElementById('value-uni').textContent = valueRef.toLocaleString('pt-br', {minimumFractionDigits: 2}) + ' R$/metro(m²)'
-            document.getElementById('resultTOT').textContent = result.toLocaleString('pt-br', {minimumFractionDigits: 2}) + ' R$'
+            document.getElementById('value-uni').textContent = valueRef.toLocaleString('pt-br', {style: "currency", currency: "BRL"}) + ' R$/metro(m²)'
+            document.getElementById('resultTOT').textContent = result.toLocaleString('pt-br', {style: "currency", currency: "BRL"}) + ' R$'
         }
     }
     else{
@@ -233,16 +229,16 @@ function resultdata()
         result = meter*valueRef
         document.getElementById('card-result').style.display = 'block'
         document.getElementById('icon-done').style.display = 'block'
-        document.getElementById('btn-reload').style.display = 'block'
-        document.getElementById('btnpdf').style.display = 'block' 
+        document.getElementById('btn-reload').style.display = 'inline'
+        document.getElementById('btnpdf').style.display = 'inline' 
 
         document.getElementById('title-name-business').textContent = document.getElementById('name-business').value
         document.getElementById('title-name-business-span').textContent = document.getElementById('name-business').value
         document.getElementById('TOTglass').textContent = ref + ' vidro\'s '
         document.getElementById('meter').textContent = meter.toFixed(2) + ' metros de forma Linear'
         document.getElementById('tint').textContent = document.getElementById('name-pelicula').value
-        document.getElementById('value-uni').textContent = valueRef.toLocaleString('pt-br', {minimumFractionDigits: 2}) + ' R$/metro'
-        document.getElementById('resultTOT').textContent = result.toLocaleString('pt-br', {minimumFractionDigits: 2}) + ' R$'
+        document.getElementById('value-uni').textContent = valueRef.toLocaleString('pt-br', {style: "currency", currency: "BRL"}) + ' R$/metro'
+        document.getElementById('resultTOT').textContent = result.toLocaleString('pt-br', {style: "currency", currency: "BRL"}) + ' R$'
 
          
        }

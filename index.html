@@ -25,10 +25,11 @@
                 <label for="name-pelicula">Película :</label><br><input type="text"  id="name-pelicula"  placeholder="Película"><br>
                 <label for="valor-da-película">Valor :</label><br><input type="number" id="valor-de-cobranca" placeholder="valor em cada metro" step=".01"><br>
                 <div id="viewform"></div>
-                <button onclick="newInputGlass()" id="btnadd">ADICIONAR UMA NOVA MEDIDA +</button>
-                <button onclick="RemoveGlass()" class="labelClose">Remover</button>
+              <div class="buttonControls">
+                <button onclick="newInputGlass()" id="btnadd">ADICIONAR MEDIDA +</button>
                 <button onclick="validateForm()" id="btnconsult" style="display:none">Consultar</button>
-                
+                <button class="labelClose" id="btnclose">Remover</button>
+              </div>                
             </form>
         </div>
         <div class="resultview default" id="result-view">
@@ -36,7 +37,7 @@
         <button id="btnpdf" onclick="nwpdf()">Salvar PDF</button>
             <div class="card" id="card-result" >
                 <h2 id="title-name-business" style="text-align: center;">Nome da empresa</h2>
-                <hr width="60%">
+                <hr width="60%" style="margin: 0 auto;">
                 <br>
                 <br>
                 <label class="formatResult">Empresa :</label><span id="title-name-business-span" class="formatResult"></span><br><br>
