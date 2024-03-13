@@ -4,6 +4,9 @@
     width: 95% !important;
     height: 700px !important;
   }
+  .resultview{
+    display: none;
+  }
 
 }
 *{
@@ -17,6 +20,7 @@
     margin: 0 auto;
     padding: 0;
     border: 1px solid #dcdcdc;
+    border-radius: 7px;
 }
 
 .header-top{
@@ -51,14 +55,14 @@
     overflow: hidden !important;
     border:none;
     justify-content: flex-start;
-    height: 670px;
+    height: 780px;
     position: relative;
     margin-top: -8px;
 }
 .formdata{
     width: 32rem;
     margin: 15px auto auto auto;
-    height: 653px;
+    height: 750px;
     overflow: auto;
     border:none;
     display: flex;
@@ -74,17 +78,17 @@
     border-radius: none;
     padding: 7px;
 }
-.formdata::-webkit-scrollbar{
+.viewFormclass::-webkit-scrollbar{
     width: 8px;
     background: #F4F4F4;
  
 }
-.formdata::-webkit-scrollbar-thumb{
+.viewFormclass::-webkit-scrollbar-thumb{
     background-color: #909090;
     border-radius: 7px;
     
 }
-.formdata::-webkit-scrollbar-track{
+.viewFormclass::-webkit-scrollbar-track{
     background-color: #e2e2e2;
 }
 .form input{
@@ -116,17 +120,17 @@
     border: 1px solid #68badb9f;
     box-shadow: 1px 1px 2px #2fb3ff6a;
 }
-.form #btnadd{
+.buttonControls #btnadd{
     border:none;
     border-radius: 8px;
     background-color: #37a167;
     color: white;
     padding: 12px 32px;
     margin: 5px;
-}.form #btnadd:hover{
+}.buttonControls #btnadd:hover{
     cursor: pointer;
 }
-.form #btnconsult{
+.buttonControls #btnconsult{
     border:none;
     border-radius: 8px;
     background-color: #3bb2cf;
@@ -145,6 +149,7 @@
     border-radius: 7px;
     margin: 7px;
     padding: 10px;
+    border-right:5px solid rgb(81, 127, 203);
 }
 .labelContent{
     background-color: rgb(81, 127, 203);
@@ -163,6 +168,30 @@
     display: none;
 }.labelClose:hover{
     cursor: pointer;
+}
+.viewFormclass{
+    margin-top:4px;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    border: 1px solid #d6d6d6;
+    
+}
+.viewFormclass input{
+    width: 70%;
+    margin: 15px;
+    padding: 11px;
+    border-radius: 4px;
+    border: 1px solid #d6d6d6;
+    text-align: center;
+}
+.viewFormclass input:focus{
+    outline: none;
+    border: 1px solid #68badb9f;
+    box-shadow: 1px 1px 2px #2fb3ff6a;
+}
+.viewFormclass  input[type="number"]::-webkit-inner-spin-button,input[type="nunber"]::-webkit-outer-spin-button{
+    -webkit-appearance: none;
 }
 .buttonControls{
     width: 100%;
@@ -199,16 +228,16 @@
 .resultview{
     position: relative;
     background-color: rgb(249, 252, 253);
-    background-image: url('../_picture/relatorio.png');
+    background-image: url('../_picture/relatorio.ico');
     background-position: center center;
     background-repeat: no-repeat;
-    background-size: 20%;
+    background-size: 12%;
     width: 50rem;
     margin: 15px auto 15px auto;
     padding: 15px;
     border:none;
-    animation: .4s ZoonIn ease-in;
     border-radius: 7px;
+    
 }
 #btnpdf{
     background-color: #3919ae;
@@ -251,13 +280,13 @@
 }
 @keyframes pullup {
     0%{
-        margin-top:125px;
+        margin-top:0px;
     }
     50%{
-        margin-top:95px;
+        margin-top:15px;
     }
     100%{
-        margin-top:125px;
+        margin-top:0px;
     }
     
 }

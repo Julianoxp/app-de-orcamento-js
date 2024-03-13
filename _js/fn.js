@@ -9,6 +9,7 @@ window.addEventListener('DOMContentLoaded',(event)=>{
         }
         if(indice == 0)
         {
+            document.getElementById('forminfo').style.display = "block"
             document.getElementById('btnconsult').style.display = "none"
             document.getElementById('btnclose').style.display = 'none'
         }
@@ -22,9 +23,8 @@ var Query = false
 var ref = 0
 var valueRef = 0
 var indice = 0
-function validateForm()
-{
-    
+
+function validateDataInit(){
     var data  = [document.getElementById('referencia-de-orçamento').value,
     document.getElementById('name-business').value,
     document.getElementById('name-pelicula').value,
@@ -40,37 +40,47 @@ function validateForm()
         }
          
     }
+    return true;
+}
+function validateMeter(){
     for(i=ref;i<=ref;i++){
-            meterHeight = document.getElementById('altura'+i).value
-            meterWidth = document.getElementById('largura'+i).value
-            if(meterHeight.length > 5 || meterWidth.length > 5){
-                alert('Medidas +99 não são aceitas!')
-                return false
-            }
-            if(meterHeight == '' || meterWidth == '')
-            {
-                alert('Dados incompletos!')
-                return false
-            }
-            validateHeight = regexH.test(meterHeight)
-            validateWidth = regexW.test(meterWidth)
-            if(!validateHeight){
-                alert('Insira dados de forma correta! Ex:\"22,55\"')
-                return false
-            }
-            if(!validateWidth){
-                alert('Insira dados de forma correta! Ex:\"22,55\"')
-                return false
-            }
+        meterHeight = document.getElementById('altura'+i).value
+        meterWidth = document.getElementById('largura'+i).value
+        if(meterHeight.length > 5 || meterWidth.length > 5){
+            alert('Medidas +99 não são aceitas!')
+            return false
+        }
+        if(meterHeight == '' || meterWidth == '')
+        {
+            alert('Dados incompletos!')
+            return false
+        }
+        validateHeight = regexH.test(meterHeight)
+        validateWidth = regexW.test(meterWidth)
+        if(!validateHeight){
+            alert('Insira dados de forma correta! Ex:\"22,55\"')
+            return false
+        }
+        if(!validateWidth){
+            alert('Insira dados de forma correta! Ex:\"22,55\"')
+            return false
+        }
     }
-    
-    document.getElementById('formdata').style.display = 'none'
-    document.getElementById('result-view').style.backgroundSize = "7%"
-    document.getElementById('result-view').style.backgroundImage = "url('_picture/load.gif')"
-    
-    setTimeout(()=>{
-        resultdata()
-    },4500)
+    return true;
+}
+function validateForm()
+{   
+    if(validateDataInit() && validateMeter()) 
+    {
+        document.getElementById('formdata').style.display = 'none'
+        document.getElementById('result-view').style.display = 'block'
+        document.getElementById('result-view').style.backgroundSize = "7%"
+        document.getElementById('result-view').style.backgroundImage = "url('_picture/load.gif')"
+        
+        setTimeout(()=>{
+            resultdata()
+        },4500)
+    }
 } 
 function nwpdf()
 {
@@ -81,10 +91,11 @@ function nwpdf()
     style +="body{background-color: white;font-size: 15pt;font-family: Arial, Helvetica, sans-serif;color: #545454;}"
     style +="span{margin:120px auto 120px auto;}label{margin:1200px auto 1200px auto;}"
     style += "</style>"
-    
+    scriptwindow = "<script type='text/javascript'>window.onmouseover = function(){ window.close() }</script>"
     win.document.write('<!DOCTYPE html><html lang="pt-br">')
     win.document.write('<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"> <link rel="shortcut icon" href="logoicon.png" type="image/x-icon">')
     win.document.write(style)
+    win.document.write(scriptwindow)
     win.document.write('<title>Consulte.Me</title></head>')
     win.document.write('<body>')
     win.document.write(htmlResult)
@@ -97,84 +108,89 @@ function nwpdf()
 
 
 function newInputGlass(){
-    document.getElementById('btnclose').style.display = 'inline'
-    Query = true
-    if(Query && indice <= 50)
+    if(validateDataInit())
     {
-        indice++
-        ref = indice
-        var html = document.getElementById('viewform')
+        document.getElementById('forminfo').style.display = "none"
+        document.getElementById('btnclose').style.display = 'inline'
+        Query = true
+        if(Query && indice <= 50)
+        {
+            indice++
+            ref = indice
+            var html = document.getElementById('viewform')
 
-        content = document.createElement("div")
-        idContent = document.createAttribute("id")
-        idContent.value = "idcontent"+indice
-        content.setAttributeNode(idContent)
+            content = document.createElement("div")
+            idContent = document.createAttribute("id")
+            idContent.value = "idcontent"+indice
+            content.setAttributeNode(idContent)
 
-       /* labelClose = document.createElement("label")
-        idlabel = document.createAttribute("id")
-        labelClose.classList.add("labelClose")
-        idlabel.value = indice
-        labelClose.setAttributeNode(idlabel)
-        
-        labelClose.textContent = "X"*/
+        /* labelClose = document.createElement("label")
+            idlabel = document.createAttribute("id")
+            labelClose.classList.add("labelClose")
+            idlabel.value = indice
+            labelClose.setAttributeNode(idlabel)
+            
+            labelClose.textContent = "X"*/
 
-        content.classList.add("glassContent")
-        label = document.createElement("label")
-        label.classList.add('labelContent')
-        label.textContent =  indice +"º VIDRO "
+            content.classList.add("glassContent")
+            label = document.createElement("label")
+            label.classList.add('labelContent')
+            label.textContent =  'Medida '+indice +'º'
 
-        breakRow = document.createElement("br")
+            breakRow1 = document.createElement("br")
+            breakRow2 = document.createElement("br")
 
-        inputHTMLwidth = document.createElement("input")
-        inputHTMLheight = document.createElement("input")
+            inputHTMLwidth = document.createElement("input")
+            inputHTMLheight = document.createElement("input")
 
-        placeholderWidth = document.createAttribute("placeholder")
-        placeholderHeight = document.createAttribute("placeholder")
+            placeholderWidth = document.createAttribute("placeholder")
+            placeholderHeight = document.createAttribute("placeholder")
 
-        typeInputWidth = document.createAttribute("type")
-        typeInputHeight = document.createAttribute("type")
-        idWidth = document.createAttribute("id")
-        idHeight = document.createAttribute("id")
+            typeInputWidth = document.createAttribute("type")
+            typeInputHeight = document.createAttribute("type")
+            idWidth = document.createAttribute("id")
+            idHeight = document.createAttribute("id")
 
-        stepWidth = document.createAttribute("step")
-        stepHeight = document.createAttribute("step")
+            stepWidth = document.createAttribute("step")
+            stepHeight = document.createAttribute("step")
 
-        stepWidth.value = ".01"
-        stepHeight.value = ".01"
-        typeInputWidth.value = "number"
-        typeInputHeight.value = "number"
-        placeholderWidth.value = "Altura"
-        placeholderHeight.value = "Largura"
+            stepWidth.value = ".01"
+            stepHeight.value = ".01"
+            typeInputWidth.value = "number"
+            typeInputHeight.value = "number"
+            placeholderWidth.value = "Altura"
+            placeholderHeight.value = "Largura"
 
-        inputHTMLheight.setAttributeNode(stepWidth)
-        inputHTMLwidth.setAttributeNode(stepHeight)
+            inputHTMLheight.setAttributeNode(stepWidth)
+            inputHTMLwidth.setAttributeNode(stepHeight)
 
-        inputHTMLheight.setAttributeNode(typeInputWidth)
-        inputHTMLwidth.setAttributeNode(typeInputHeight)
+            inputHTMLheight.setAttributeNode(typeInputWidth)
+            inputHTMLwidth.setAttributeNode(typeInputHeight)
 
-        inputHTMLheight.setAttributeNode(placeholderWidth)
-        inputHTMLwidth.setAttributeNode(placeholderHeight)
+            inputHTMLheight.setAttributeNode(placeholderWidth)
+            inputHTMLwidth.setAttributeNode(placeholderHeight)
 
-        idHeight.value = 'altura'+indice
-        inputHTMLheight.setAttributeNode(idHeight)
-        
-        html.appendChild(content)
-        content.appendChild(label)
-       /* content.appendChild(labelClose)*/
-        content.appendChild(breakRow)
-        content.appendChild(inputHTMLheight)
+            idHeight.value = 'altura'+indice
+            inputHTMLheight.setAttributeNode(idHeight)
+            
+            html.appendChild(content)
+            content.appendChild(label)
+        /* content.appendChild(labelClose)*/
+            content.appendChild(breakRow1)
+            content.appendChild(inputHTMLheight)
 
-        idWidth.value = 'largura'+indice
-        inputHTMLwidth.setAttributeNode(idWidth)
-        content.appendChild(inputHTMLwidth)
+            idWidth.value = 'largura'+indice
+            inputHTMLwidth.setAttributeNode(idWidth)
+            content.appendChild(inputHTMLwidth)
 
-        content.appendChild(breakRow)
-        /*labelClose.onclick = function(e){RemoveGlass(this.id)}*/
-        
-        
-        document.getElementById('btnconsult').style.display = "block"
+            content.appendChild(breakRow2)
+            /*labelClose.onclick = function(e){RemoveGlass(this.id)}*/
+            
+            
+            document.getElementById('btnconsult').style.display = "block"
+        }
+        else alert('Operação em capacidade máxima!')
     }
-    else alert('Operação em capacidade máxima!')
    
 }
 function resultdata()
