@@ -7,10 +7,10 @@
     <link rel="stylesheet" href="_css/main.css">
     <script type="text/javascript" src="_js/fn.js"></script>
     
-    <title>Consulte.Me</title>
+    <title>Consulte Web</title>
 </head>
 <body>
-    <header class="header-top "><div class="img-logo"></div></header>
+    <header class="header-top " on><div class="img-logo"></div></header>
     <main class="content default">
         <div class="formdata default" id="formdata">
             <form action="" return=false id="forminfo" class="form default" onsubmit="return false">
@@ -22,8 +22,8 @@
                 </select>
                 <br>
                 <label for="name-business">Nome da empresa :</label><br><input type="text"  id="name-business"  placeholder="Empresa"><br>
-                <label for="name-pelicula">Película :</label><br><input type="text"  id="name-pelicula"  placeholder="Película"><br>
-                <label for="valor-da-película">Valor :</label><br><input type="number" id="valor-de-cobranca" placeholder="valor em cada metro" step=".01"><br>
+                <label for="name-pelicula">Película :</label><br><input type="text" id="name-pelicula"  placeholder="Película"><br>
+                <label for="valor-da-película">Valor :</label><br><input type="number" id="valor-de-cobranca" placeholder="valor em cada metro" step=".01" onblur="validateValue()"><br>
                 
               
                              

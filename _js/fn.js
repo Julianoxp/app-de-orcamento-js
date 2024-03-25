@@ -16,6 +16,7 @@ window.addEventListener('DOMContentLoaded',(event)=>{
     }
   
 })
+
 var indicedata = 1
 var referencia = 5
 var result = 0
@@ -23,15 +24,27 @@ var Query = false
 var ref = 0
 var valueRef = 0
 var indice = 0
+regexH = /[0-9]{1,2}\.[0-9]{2}/g
+regexW = /[0-9]{1,2}\.[0-9]{2}/g
+regexVal = /\.[0-9]{1,}/g
 
+function validateValue(){
+    let val =  document.getElementById('valor-de-cobranca').value
+    if(val){
+        if(val.indexOf(".")>0){
+            // 
+             
+        }else{
+         document.getElementById('valor-de-cobranca').value = val+'.00'
+        }
+    }
+}
 function validateDataInit(){
     var data  = [document.getElementById('referencia-de-orçamento').value,
     document.getElementById('name-business').value,
     document.getElementById('name-pelicula').value,
     document.getElementById('valor-de-cobranca').value];
-    
-    regexH = /[0-9]{1,2}\.[0-9]{2}/g
-    regexW = /[0-9]{1,2}\.[0-9]{2}/g
+            
     for(i=0;i<4;i++)
     {
         if(data[i] == ''){
@@ -96,7 +109,7 @@ function nwpdf()
     win.document.write('<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"> <link rel="shortcut icon" href="logoicon.png" type="image/x-icon">')
     win.document.write(style)
     win.document.write(scriptwindow)
-    win.document.write('<title>Consulte.Me</title></head>')
+    win.document.write('<title>'+document.getElementById('name-business').value+'</title></head>')
     win.document.write('<body>')
     win.document.write(htmlResult)
     win.document.write('</body>')
@@ -123,14 +136,6 @@ function newInputGlass(){
             idContent = document.createAttribute("id")
             idContent.value = "idcontent"+indice
             content.setAttributeNode(idContent)
-
-        /* labelClose = document.createElement("label")
-            idlabel = document.createAttribute("id")
-            labelClose.classList.add("labelClose")
-            idlabel.value = indice
-            labelClose.setAttributeNode(idlabel)
-            
-            labelClose.textContent = "X"*/
 
             content.classList.add("glassContent")
             label = document.createElement("label")
